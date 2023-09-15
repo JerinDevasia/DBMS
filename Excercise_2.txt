@@ -1,0 +1,10 @@
+INSERT INTO person VALUES(1,'Abin','Alappuzha','M'),(2,'Alan','Kannur','M');
+ALTER TABLE vehicle MODIFY model varchar(25);
+INSERT INTO vehicle VALUES(234,'BMW',2018),(377,'Audi',2020); 
+INSERT INTO accident VALUES(377,'2020-10-12'),(777,'2021-07-15');
+INSERT INTO owns VALUES(1,234),(2,377);
+INSERT INTO participated VALUES(377,234,1,15000.00),(777,377,2,9000.00);
+SELECT * FROM person where name LIKE 'a%';
+SELECT * FROM participated where damage_amt>10000;
+SELECT * FROM accident where date BETWEEN '2020-01-01' AND '2021-12-31';
+SELECT vehicle.license,model,year,name,address from vehicle,person,owns WHERE owns.driver_id=person.driver_id AND owns.license=vehicle.license;
