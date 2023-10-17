@@ -1,0 +1,19 @@
+CREATE DATABASE store;
+use store;
+CREATE TABLE product(pid varchar(25),pname varchar(25),price int,qty_in_stock int,PRIMARY KEY(pid));
+DELIMITER //
+CREATE PROCEDURE insertProduct(
+    IN pid varchar(25),
+    IN pname varchar(25),
+    IN price int,
+    IN quantity int)
+BEGIN
+IF quantity>0 THEN
+INSERT INTO product(pid,pname,price,qty_in_stock)VALUES(pid,pname,price,quantity);
+END IF;
+END //
+DELIMITER //
+TRUNCATE TABLE product;
+CALL insertProduct(123,'Pen',10,500);
+CALL insertProduct(777,'Pencil',5,700);
+SELECT * FROM product;
